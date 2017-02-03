@@ -17,9 +17,16 @@ setColor.on('keyup', function (e) {
     }
 });
 
+makeTwentyDivs();
 
 function changeColor(){
     colorId = colorField.val();
     brush.css('background', colorId);
     console.log("hello!");
+}
+
+function makeTwentyDivs() {
+    for(var i=0 ; i<20 ; i++){
+        $('.controls').append("<div class='square'></div>");
+    }
 }
