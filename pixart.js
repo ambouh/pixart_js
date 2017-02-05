@@ -20,13 +20,13 @@ setColor.on('keyup', function (e) {
 makeTwentyDivs();
 
 $('.square').on('click', function () {
-    $(this).css('background', 'green');
+
+    $(this).css('background', colorId);
 });
 
 function changeColor(){
     colorId = colorField.val();
     brush.css('background', colorId);
-    console.log("hello!");
 }
 
 function makeTwentyDivs() {
