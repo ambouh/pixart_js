@@ -19,7 +19,7 @@ setColor.on('keyup', function (e) {
 
 makeTwentyDivs();
 
-$('.square').on('click', function () {
+$('.square').on('mouseover', function () {
 
     $(this).css('background', colorId);
 });
@@ -30,7 +30,7 @@ function changeColor(){
 }
 
 function makeTwentyDivs() {
-    for(var i=0 ; i<20 ; i++){
+    for(var i=0 ; i<8000 ; i++){
         $('.controls').append("<div class='square'></div>");
     }
 }
