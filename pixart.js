@@ -19,6 +19,10 @@ setColor.on('keyup', function (e) {
 
 makeTwentyDivs();
 
+$('.square').on('click', function () {
+    $(this).css('background', 'green');
+});
+
 function changeColor(){
     colorId = colorField.val();
     brush.css('background', colorId);
@@ -30,3 +34,5 @@ function makeTwentyDivs() {
         $('.controls').append("<div class='square'></div>");
     }
 }
+
+
