@@ -1,25 +1,8 @@
 var colorField = $('#color-field'),
     setColor = $('#set-color'),
     brush = $('.brush:nth-child(1)'),
-    brush2 = $('.brush:nth-child(2)')
-
-    //,brush3 = $('.brush:nth-child(3)')
-    ;
-
-setColor.on('keyup', function (e) {
-
-    if(e.keyCode == 13) {
-        //to prevent page from refreshing
-        e.preventDefault();
-        paint(brush,colorField.val());
-    }
-});
-
-setColor.on('click', function (e) {
-    //to prevent page from refreshing
-    e.preventDefault();
-    paint(brush,colorField.val());
-});
+    brush2 = $('.brush:nth-child(2)'),
+    brush3 = $('.brush:nth-child(3)');
 
 /*makeDivs() - creates 8000 divs that is used as a board*/
 function makeDivs() {
@@ -40,37 +23,38 @@ $('.square').on('mouseover', function () {
     }
 );
 
+
+$('body').on('click', function (e) {
+    e.preventDefault();
+    var colorToUse;
+    var selected = $(e.target);
+
+    if(selected.is(setColor)) {
+        e.preventDefault();
+        brush3.css('backgroundColor', getColor(brush2));
+        brush2.css('backgroundColor', getColor(brush));
+        colorToUse = colorField.val();
+    } else if (selected.is(brush2)) {
+        colorToUse = getColor(brush2);
+        brush2.css('backgroundColor', getColor(brush));
+    } else if (selected.is(brush3)) {
+        colorToUse = getColor(brush3);
+        brush3.css('backgroundColor', getColor(brush2));
+        brush2.css('backgroundColor', getColor(brush));
+
+    } else {}
+
+    paint(brush, colorToUse);
+
+});
+
 function paint(selectedElement, colorToUse){
     var colorToPaint = colorToUse;
     selectedElement.css('background', colorToPaint);
 }
 
 
-
-
-
-
-
-
-
-
-
-/*
-brush2.on('click', function () {
-    var color2 = brush2.css('backgroundColor');
-    changeColor(color2);
-});
-
-
-
-function changeColor(color){
-    colorId = color;
-    brush.css('background', colorId);
+function getColor(element) {
+    return element.css('backgroundColor');
 }
-
-
-*/
-
-
-
 
